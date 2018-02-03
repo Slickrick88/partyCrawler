@@ -25,3 +25,5 @@ var partyObj = {
 
 
 }
+
+//change made by Rick
