@@ -50,134 +50,135 @@
   </div>
 
   <div class="container">
+    <form id="partyCrawlerInput">
 
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="eventName">Name of Event</label>
-        <input type="text" class="form-control" id="eventName">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="eventName">Name of Event</label>
+          <input type="text" class="form-control" id="eventName">
+        </div>
       </div>
-    </div>
 
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type of Event
-        <span class="eventType"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#" value="1">Block Party</a>
-        </li>
-        <li>
-          <a href="#" value="2">Birthday Party</a>
-        </li>
-        <li>
-          <a href="#" value="3">Shhhh! Surprise Birthday Party</a>
-        </li>
-        <li>
-          <a href="#" value="3">Cocktail PartyDinner Party</a>
-        </li>
-        <li>
-          <a href="#" value="4">Dinner Party</a>
-        </li>
-        <li>
-          <a href="#" value="5">Housewarming Party</a>
-        </li>
-        <li>
-          <a href="#" value="6">Other</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="Host">Host(s)</label>
-        <input type="text" class="form-control" id="Host">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type of Event
+          <span class="eventType"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" value="1">Block Party</a>
+          </li>
+          <li>
+            <a href="#" value="2">Birthday Party</a>
+          </li>
+          <li>
+            <a href="#" value="3">Shhhh! Surprise Birthday Party</a>
+          </li>
+          <li>
+            <a href="#" value="3">Cocktail PartyDinner Party</a>
+          </li>
+          <li>
+            <a href="#" value="4">Dinner Party</a>
+          </li>
+          <li>
+            <a href="#" value="5">Housewarming Party</a>
+          </li>
+          <li>
+            <a href="#" value="6">Other</a>
+          </li>
+        </ul>
       </div>
-    </div>
 
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="Descripction">Short Description:</label>
-        <textarea class="form-control" rows="5" id="Description"></textarea>
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="host">Host(s)</label>
+          <input type="text" class="form-control" id="host">
+        </div>
       </div>
-    </div>
 
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="datetime-local">Date and Time</label>
-        <input id="datetime" type="datetime-local">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="descripction">Short Description:</label>
+          <textarea class="form-control" rows="5" id="description"></textarea>
+        </div>
       </div>
-    </div>
 
-    <div class=row>
-      <div class="form-group col-sm-6">
-        <label for="address-input">Address: </label>
-        <input type="text" class="form-control" id="address-input">
-        <label for="city-input">City: </label>
-        <input type="text" class="form-control" id="city-input">
-        <label for="state-input">State (ex: NC): </label>
-        <input type="text" class="form-control" id="state-input">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="datetime-local">Date and Time</label>
+          <input id="datetime" type="datetime-local">
+        </div>
       </div>
-    </div>
 
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Attire
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#" value="1">Casual</a>
-        </li>
-        <li>
-          <a href="#" value="2">Dressy Casual</a>
-        </li>
-        <li>
-          <a href="#" value="3">Business Casual</a>
-        </li>
-        <li>
-          <a href="#" value="4">Semiformal</a>
-        </li>
-        <li>
-          <a href="#" value="5">Black Tie</a>
-        </li>
-        <li>
-          <a href="#" value="6">White Tie</a>
-        </li>
-        <li>
-          <a href="#" value="6">Other</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Child Policy
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#" value="1">Children allowed</a>
-        </li>
-        <li>
-          <a href="#" value="2">No Children</a>
-        </li>
-      </ul>
-    </div>
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="Invitees">List of Invitees</label>
-        <input type="text" class="form-control" id="Items">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="address-input">Address: </label>
+          <input type="text" class="form-control" id="address-input">
+          <label for="city-input">City: </label>
+          <input type="text" class="form-control" id="city-input">
+          <label for="state-input">State (ex: NC): </label>
+          <input type="text" class="form-control" id="state-input">
+        </div>
       </div>
-    </div>
 
-    <div class=r ow>
-      <div class="form-group col-sm-6">
-        <label for="Host">Items to Bring</label>
-        <input type="text" class="form-control" id="Items">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Attire
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" value="1">Casual</a>
+          </li>
+          <li>
+            <a href="#" value="2">Dressy Casual</a>
+          </li>
+          <li>
+            <a href="#" value="3">Business Casual</a>
+          </li>
+          <li>
+            <a href="#" value="4">Semiformal</a>
+          </li>
+          <li>
+            <a href="#" value="5">Black Tie</a>
+          </li>
+          <li>
+            <a href="#" value="6">White Tie</a>
+          </li>
+          <li>
+            <a href="#" value="6">Other</a>
+          </li>
+        </ul>
       </div>
-    </div>
+
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Child Policy
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#" value="1">Children allowed</a>
+          </li>
+          <li>
+            <a href="#" value="2">No Children</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="invitees">List of Invitees</label>
+          <input type="text" class="form-control" id="invitees">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label for="items">Items to Bring</label>
+          <input type="text" class="form-control" id="items">
+        </div>
+      </div>
 
 
-    <button type="button" class="btn btn-info" id="submit">Submit</button>
-
+      <button type="button" class="btn btn-info" id="submit">Submit</button>
+    </form>
 
 
 </body>
