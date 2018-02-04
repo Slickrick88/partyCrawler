@@ -8,6 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
   <script src="assets/Javascript/rob_java.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <title>Really Fuckin Sweet App</title>
 </head>
 
@@ -36,20 +37,21 @@
 
     <div class="container">
       <h2>Events Bro</h2>
-        <div class="table table-bordered">
+        <table class="table table-bordered" id="pendingEvents">
           <thead>
             <tr>
               <th>Date</th>
               <th>Name of Event</th>
               <th>Location</th>
               <th>Host</th>
+              <th>Time Till Event (days)</th>
             </tr>
           </thead>
 
-          <tbody id="table-input">
+          <tbody id="events">
 
           </tbody>
-        </div>
+        </table>
     </div>      
 
   </div>

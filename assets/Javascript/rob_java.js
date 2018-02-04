@@ -7,6 +7,8 @@ $(document).ready(function () {
   var host;
   var pplComing;
   var stuff;
+  var addy;
+  var timeTill;
 
   var config = {
     apiKey: "AIzaSyAb-Eg8PzUPHvjSZbD9x6DwLEzUL9Ap_dM",
@@ -37,6 +39,7 @@ $(document).ready(function () {
 
     //reset entry form
     $("#partyCrawlerInput")[0].reset();
+
     //push to firebase
     database.ref().push({
       Name: partyName,
@@ -55,6 +58,21 @@ $(document).ready(function () {
         takeBy: "NA"
       }]
     });
+  });
+
+  // Create Firebase event for adding events to the database and a row in the html when a user adds an entry
+  database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+    //sets up the train objects in the dom
+    event.preventDefault();
+    host = childSnapshot.val().Host;
+    partyName = childSnapshot.val().Name;
+    addy = childSnapshot.val().Location;
+    partyTime = childSnapshot.val().Time;
+    var timeTill = moment().diff(moment(partyTime), "days");
+    console.log("time untill party: "+ timeTill);
+    //posts events to the DOM
+    $("#pendingEvents > tbody").append("<tr><td>" + partyTime + "</td><td>" + partyName + "</td><td>" +
+      addy + "</td><td>" + host + "</td><td>" + timeTill + "</td></tr>");
   });
 });
 
