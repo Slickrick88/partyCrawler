@@ -69,7 +69,7 @@ $(document).ready(function () {
     addy = childSnapshot.val().Location;
     partyTime = childSnapshot.val().Time;
     var timeTill = moment().diff(moment(partyTime), "days");
-    console.log("time untill party: "+ timeTill);
+    console.log("time until party: "+ timeTill);
     //posts events to the DOM
     $("#pendingEvents > tbody").append("<tr><td>" + partyTime + "</td><td>" + partyName + "</td><td>" +
       addy + "</td><td>" + host + "</td><td>" + timeTill + "</td></tr>");
