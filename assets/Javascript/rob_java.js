@@ -76,7 +76,6 @@ $(document).ready(function () {
     var timeTill = moment().diff(moment(partyTime), "days");
     console.log("time until party: "+ timeTill);
     //posts events to the DOM
-
     $("#pendingEvents > tbody").append("<tr data-key='"+ partyID +"'><td>" + partyTime + "</td><td class='partyID'>" + partyName + "</td><td>" +
       addy + "</td><td>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
