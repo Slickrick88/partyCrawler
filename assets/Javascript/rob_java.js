@@ -73,6 +73,11 @@ $(document).ready(function () {
     //posts events to the DOM
     $("#pendingEvents > tbody").append("<tr><td>" + partyTime + "</td><td>" + partyName + "</td><td>" +
       addy + "</td><td>" + host + "</td><td>" + timeTill + "</td></tr>");
+
+    $("#pendingEvents").on("click", function() {
+      $(location).attr('href', 'Add_page.html')
+    });
+
   });
 });
 
