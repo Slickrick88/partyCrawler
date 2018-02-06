@@ -60,33 +60,17 @@
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type of Event
-          <span class="eventType"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#" value="1">Block Party</a>
-          </li>
-          <li>
-            <a href="#" value="2">Birthday Party</a>
-          </li>
-          <li>
-            <a href="#" value="3">Shhhh! Surprise Birthday Party</a>
-          </li>
-          <li>
-            <a href="#" value="3">Cocktail PartyDinner Party</a>
-          </li>
-          <li>
-            <a href="#" value="4">Dinner Party</a>
-          </li>
-          <li>
-            <a href="#" value="5">Housewarming Party</a>
-          </li>
-          <li>
-            <a href="#" value="6">Other</a>
-          </li>
-        </ul>
-      </div>
+          <label for = "eventType">Type of Event
+            <select class="form-control" id = "eventType" name = "eventType">
+            <option value ="1"> Block Party</option>
+            <option value ="2"> Birthday Party</option>
+            <option value ="3"> Shhhh! Surprise Birthday Party</option>
+            <option value ="4"> Cocktail Party</option>
+            <option value ="5"> Dinner Party</option>
+            <option value ="6"> Housewarming Party</option>
+            <option value ="7"> Other</option>
+          </select>
+        </div>
 
       <div class="row">
         <div class="form-group col-sm-6">
@@ -121,47 +105,30 @@
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Attire
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#" value="1">Casual</a>
-          </li>
-          <li>
-            <a href="#" value="2">Dressy Casual</a>
-          </li>
-          <li>
-            <a href="#" value="3">Business Casual</a>
-          </li>
-          <li>
-            <a href="#" value="4">Semiformal</a>
-          </li>
-          <li>
-            <a href="#" value="5">Black Tie</a>
-          </li>
-          <li>
-            <a href="#" value="6">White Tie</a>
-          </li>
-          <li>
-            <a href="#" value="6">Other</a>
-          </li>
-        </ul>
+          <label for = "attire"> Attire
+          <select class = "form-control" id = "attire" name = "attire">
+              <option value ="1">Casual</option>
+              <option value ="2">Dressy Casual</option>
+              <option value ="3">Business Casual</option>
+              <option value ="4">Semiformal</option>
+              <option value ="5">Black Tie</option>
+              <option value ="6">White Tie</option>
+              <option value ="7">Other</option>
+          </label>
+        </select>
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Child Policy
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <a href="#" value="1">Children allowed</a>
-          </li>
-          <li>
-            <a href="#" value="2">No Children</a>
-          </li>
-        </ul>
-      </div>
+          <label for = "Child"> Child Policy 
+              <select class = "form-control" id = "child" name = "child" >
+                  <option value ="1">Children allowed</option>
+                  <option value = "2">No Children</option>
+                </label>
+              </select>
+            </div>
+
+
+
       <div class="row">
         <div class="form-group col-sm-6">
           <label for="invitees">List of Invitees</label>
@@ -177,8 +144,8 @@
       </div>
 
 
-      <button type="button" class="btn btn-info" id="submit">Submit</button>
-    </form>
+ <input type="submit" value="Submit">    
+</form>
 
 
 </body>
