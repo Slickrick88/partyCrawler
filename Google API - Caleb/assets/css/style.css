@@ -1,0 +1,98 @@
+body{
+  background: rgba(222, 184, 135, 0.233);
+  color: rgb(7, 3, 3);
+  
+  font-family: "lato", sans-serif;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+#map{
+  height: 700px;
+  width: 100%;
+  margin-bottom: 50px;
+  border: 4px solid rgb(185, 144, 67);
+    border-radius: 7px;
+  outline: none;
+  border-color: rgb(185, 144, 67);
+  box-shadow: 0 0 50px rgb(185, 144, 67);
+}
+.allEvent{
+  padding-left: 50px;
+}
+
+#addEvent{
+  background: linear-gradient(cyan,peachpuff);
+  margin: 5% 0;
+}
+#events{
+  height: 410px;
+  width: 280px;
+  overflow: auto;
+  margin-left:-10px;
+}
+#event{
+  margin:3%;
+  margin-bottom: 10px;
+  margin-right:20px;
+
+  padding-top: 5%;
+  padding-left: 5%;
+
+  background-color: aliceblue;
+  border: 4px solid rgb(253, 253, 251);
+  border-radius: 7px;
+  outline: none;
+  border-color: rgb(250, 249, 248);
+  box-shadow: 0 0 20px rgb(68, 176, 238);
+}
+#event > :first-child { 
+  font-variant-caps: unicase;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ////////////////////////////////////////*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  rgb(129, 203, 247); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:  rgb(97, 190, 243); 
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  input[type="text"]{
+    width: 90%;
+  }
+  #event-form{
+    padding-left:5%;
+  }
+  #events{
+    margin-left:25%;
+  }
+  #map{
+    margin-top: 25px;
+    height:500px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
+}
