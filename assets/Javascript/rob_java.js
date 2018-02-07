@@ -38,6 +38,7 @@ $(document).ready(function () {
     pplComing = $("#invitees").val().trim();
     stuff = $("#items").val().trim();
     addy = address + " " + city + " " + state;
+    
     console.log("name " + partyName);
 
     //reset entry form
@@ -74,11 +75,13 @@ $(document).ready(function () {
     partyName = childSnapshot.val().Name;
     addy = childSnapshot.val().Location;
     partyTime = childSnapshot.val().Time;
+
     var timeTill = moment().diff(moment(partyTime), "days");
+    console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
     console.log("time until party: " + timeTill);
     //posts events to the DOM
 
-    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + counter + "' data-key='" + partyID + "'><td>" + partyTime + "</td><td class='partyID'>" + partyName + "</td><td>" +
+    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + counter + "' data-key='" + partyID + "'><td>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyID'>" + partyName + "</td><td>" +
       addy + "</td><td>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
@@ -88,7 +91,7 @@ $(document).ready(function () {
     console.log("min element: " + min);
     for (i = 0; i < min.length; i++) {
       var timeLeft = min[i].html()
-      console.log(timeLeft)
+      console.log("testing" + timeLeft);
     }
   };
 
