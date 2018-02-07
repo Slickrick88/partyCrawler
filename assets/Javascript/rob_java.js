@@ -81,8 +81,8 @@ $(document).ready(function () {
     console.log("time until party: " + timeTill);
     //posts events to the DOM
 
-    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + counter + "' data-key='" + partyID + "'><td>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyID'>" + partyName + "</td><td>" +
-      addy + "</td><td>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
+    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
+      addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
 
@@ -98,12 +98,15 @@ $(document).ready(function () {
   function updateTime() {
     timer = setInterval(partyTime, 1 * 1000)
   };
-
-  $("#pendingEvents").on("click", "tr", function () {
+ 
+  var table=$("#pendingEvents").DataTable();
+  $("#pendingEvents tbody").on("click", "tr", function () {
+    var rowData = table.row($(this).parents("tr").data());
+    console.log("row data:" + rowData);
     $("#itemsTbl tbody tr").remove()
     var database = firebase.database();
     var key ="";
-    key = $(".rowID").attr("data-key");
+    key = this.id;
     console.log("key is: " + key);
     database.ref(key + '/Host').once('value').then(function (snapshot) {
       host = snapshot.val();
