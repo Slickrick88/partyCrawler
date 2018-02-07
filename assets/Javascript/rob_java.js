@@ -67,38 +67,66 @@ $(document).ready(function () {
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     //sets up the train objects in the dom
     event.preventDefault();
+    counter++;
     partyID = childSnapshot.key;
-    console.log("partyID: "+ partyID);
+    console.log("partyID: " + partyID);
     host = childSnapshot.val().Host;
     partyName = childSnapshot.val().Name;
     addy = childSnapshot.val().Location;
     partyTime = childSnapshot.val().Time;
     var timeTill = moment().diff(moment(partyTime), "days");
-    console.log("time until party: "+ timeTill);
+    console.log("time until party: " + timeTill);
     //posts events to the DOM
-    $("#pendingEvents > tbody").append("<tr data-key='"+ partyID +"'><td>" + partyTime + "</td><td class='partyID'>" + partyName + "</td><td>" +
+
+    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + counter + "' data-key='" + partyID + "'><td>" + partyTime + "</td><td class='partyID'>" + partyName + "</td><td>" +
       addy + "</td><td>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
 
-  function partyDataRefresh(){
+  function partyDataRefresh() {
     var min = document.getObjectByClass("minutesTill");
-    console.log("min element: "+ min);
-    for (i=0; i< min.length; i++){
-        var timeLeft = min[i].html()
-        console.log(timeLeft)
+    console.log("min element: " + min);
+    for (i = 0; i < min.length; i++) {
+      var timeLeft = min[i].html()
+      console.log(timeLeft)
     }
   };
 
-  function updateTime(){
+  function updateTime() {
     timer = setInterval(partyTime, 1 * 1000)
   };
 
-  $("tr").on("click", function() {
-    $(location).attr('href', 'Add_page.html')
-    firebase.database().ref("/"+key).once('value').then(function(snapshot) {
-    console.log(snapshot.val());
+  $("#pendingEvents").on("click", "tr", function () {
+    $("#itemsTbl tbody tr").remove()
+    var database = firebase.database();
+    var key ="";
+    key = $(".rowID").attr("data-key");
+    console.log("key is: " + key);
+    database.ref(key + '/Host').once('value').then(function (snapshot) {
+      host = snapshot.val();
+      console.log("host pulled: " + host);
+    }, function (error) {
+      console.log(error);
+    });
+    database.ref(key + '/Items').on("child_added", function (childSnapshot) {
+      var itemKey = childSnapshot.val().key;
+      var itemDescription = childSnapshot.val().itemDescription;
+      var itemTaken = childSnapshot.val().itemTaken;
+      if (itemTaken === true) {
+        var itemTakenDesc = "Claimed"
+      }
+      else {
+        var itemTakenDesc = "Open"
+      };
+      var takenBy = childSnapshot.val().takeBy;
+      console.log("items pulled: " + itemDescription);
+      console.log("items take?: " + itemTaken);
+      console.log("taken by whom: " + takenBy);
+      //add to html dom to see what everyone is bringing
+      $("#itemsTbl > tbody").append("<tr class='rowID' data-key='" + itemKey + "'><td>" + itemDescription + "</td><td class='" +
+        itemTaken + "'>" + itemTakenDesc + "</td><td>" + takenBy + "</td></tr>");
+    }, function (error) {
+      console.log(error);
+    });
   });
 });
-});
-
