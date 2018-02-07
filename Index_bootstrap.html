@@ -23,9 +23,15 @@
         </div>
 
         <ul class="nav navbar-nav">
-          <li class="active"><a href="file:///C:/Users/rpicc/Documents/Group%20Project%201/Index_bootstrap.html">My Events</a></li>
-          <li><a href="#">See Events</a></li>
-          <li><a href="PartyCrawler.html">Create Event</a></li>
+          <li class="active">
+            <a href="file:///C:/Users/rpicc/Documents/Group%20Project%201/Index_bootstrap.html">My Events</a>
+          </li>
+          <li>
+            <a href="#">See Events</a>
+          </li>
+          <li>
+            <a href="PartyCrawler.html">Create Event</a>
+          </li>
         </ul>
 
       </div>
@@ -37,27 +43,47 @@
 
     <div class="container">
       <h2>Events Bro</h2>
-        <table class="table table-bordered" id="pendingEvents">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Name of Event</th>
-              <th>Location</th>
-              <th>Host</th>
-              <th>Time Till Event (days)</th>
-            </tr>
-          </thead>
+      <table class="table table-bordered" id="pendingEvents">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name of Event</th>
+            <th>Location</th>
+            <th>Host</th>
+            <th>Time Till Event (days)</th>
+          </tr>
+        </thead>
 
-          <tbody id="events">
+        <tbody id="events">
 
-          </tbody>
-        </table>
+        </tbody>
+      </table>
 
+      <div class="container" id="itemsContainer"></div>
+      <table class="table table-bordered" id="itemsTbl">
+        <thead>
+          <tr>
+            <th>What'cha Bringin?</th>
+            <th>Claimed?</th>
+            <th>Whos on the hook?</th>
+          </tr>
+        </thead>
+
+        <tbody id="itemsBody">
+
+        </tbody>
+      </table>
+      <button type="button" id="addItemButn">Add Item</button>
+      <button type="button"id="closeItemWindow">Main View</button>
     </div>
-    
-    <div class="google-div"><h2>Location Information</h2></div>
+  </div>
+
+  <div class="google-div">
+    <h2>Location Information</h2>
+  </div>
 
   </div>
-  
+
 </body>
+
 </html>
