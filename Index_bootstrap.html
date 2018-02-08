@@ -60,23 +60,36 @@
         </tbody>
       </table>
 
-      <!-- <div class="container" id="itemsContainer">
-      <table class="table table-bordered" id="itemsTbl">
-        <thead>
-          <tr>
-            <th>What'cha Bringin?</th>
-            <th>Claimed?</th>
-            <th>Whos on the hook?</th>
-          </tr>
-        </thead>
+      <div class="container">
+        <h2>Whos Bringing What?</h2>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="who">Your Name</label>
+            <input type="text" class="form-control" id="who">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="what">What are you brining</label>
+            <input type="text" class="form-control" id="what">
+          </div>
+        </div>
+        <button id="lap">Add Item</button>
+        <br>
+        <table class="table table-bordered" id="whoWhat">
+          <thead>
+            <tr>
+              <th>Who</th>
+              <th>What'cha Bringing?</th>
+            </tr>
+          </thead>
 
-        <tbody id="itemsBody">
+          <tbody id="events">
 
-        </tbody>
-      </table>
-      <button type="button" id="addItemButn">Add Item</button>
-      <button type="button"id="closeItemWindow">Main View</button>
-    </div> -->
+          </tbody>
+        </table>
+        <br>
+      </div>
+      <button id="lap">Add Item</button>
+    </div>
   </div>
 
   <div class="google-div">

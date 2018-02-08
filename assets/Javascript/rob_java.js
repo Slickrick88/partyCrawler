@@ -85,16 +85,12 @@ $(document).ready(function () {
     console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
     console.log("time until party: " + timeTill);
 
-    //posts events to the DOM
-    $("#pendingEvents > tbody").append("<tr class=rowID id='" + partyID + "'><td class=eventTime>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class=partyID>" + partyName + "</td><td class=location>" +
-      addy + "</td><td class=host >" + host + "</td><td class=minutesTill>" + timeTill + "</td></tr>");
     if (timeTill === -1)  {
       $(".rowID").val("");
     };
  
     //posts events to the DOM
-
-    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
+    $("#pendingEvents > tbody").append("<tr class='rowID' data-key='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
       addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
@@ -104,13 +100,12 @@ $(document).ready(function () {
   $("#pendingEvents tbody").on("click", "tr", function () {
     //remove items the were in the table previously
     $("#itemsTbl tbody tr").remove();
-    //set a variable = to the row data
-    var rowData = table.row($(this)).data();
-    var test = document.getElementById(this);
-    console.log("testing: "+rowData);  
-    console.log(table.row(this).data());
-    var database = firebase.database();
-    var key = document.getElementById
-    console.log("key is: " + key);
+    //gets the key from the row that is clicked so it can retrieve data from firebase
+    var key = $(this).data("key");
+    console.log("testing: "+key); 
+    
+    database.ref(key+"");
+
+    
   });
 });
