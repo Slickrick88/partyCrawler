@@ -70,7 +70,7 @@ $(document).ready(function () {
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     //sets up the train objects in the dom
     event.preventDefault();
-    counter++;
+
     partyID = childSnapshot.key;
     console.log("partyID: " + partyID);
     host = childSnapshot.val().Host;
@@ -78,30 +78,29 @@ $(document).ready(function () {
     addy = childSnapshot.val().Location;
     partyTime = childSnapshot.val().Time;
 
-    var timeTill = moment().diff(moment(partyTime), "days");
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("MM/DD/YYYY hh:mm:ss"));
+
+    var timeTill = moment(partyTime).diff(currentTime, "days");
     console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
     console.log("time until party: " + timeTill);
 
     //posts events to the DOM
     $("#pendingEvents > tbody").append("<tr class=rowID id='" + partyID + "'><td class=eventTime>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class=partyID>" + partyName + "</td><td class=location>" +
       addy + "</td><td class=host >" + host + "</td><td class=minutesTill>" + timeTill + "</td></tr>");
+    if (timeTill === -1)  {
+      $(".rowID").val("");
+    };
+ 
+    //posts events to the DOM
+
+    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
+      addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
 
-  function partyDataRefresh() {
-    var min = document.getObjectByClass("minutesTill");
-    console.log("min element: " + min);
-    for (i = 0; i < min.length; i++) {
-      var timeLeft = min[i].html()
-      console.log("testing" + timeLeft);
-    }
-  };
-
-  function updateTime() {
-    timer = setInterval(partyTime, 1 * 1000)
-  };
-
-  var table = $("#pendingEvents").DataTable();
+ 
+  var table=$("#pendingEvents").DataTable();
   $("#pendingEvents tbody").on("click", "tr", function () {
     //remove items the were in the table previously
     $("#itemsTbl tbody tr").remove();
