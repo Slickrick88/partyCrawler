@@ -106,7 +106,9 @@ $(document).ready(function () {
     //remove items the were in the table previously
     $("#itemsTbl tbody tr").remove();
     //set a variable = to the row data
-    var rowData = table.row(this).data();
+    var rowData = table.row($(this)).data();
+    var test = document.getElementById(this);
+    console.log("testing: "+rowData);  
     console.log(table.row(this).data());
     var database = firebase.database();
     var key = rowData.id;
