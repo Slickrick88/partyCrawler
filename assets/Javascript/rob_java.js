@@ -82,9 +82,8 @@ $(document).ready(function () {
     console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
     console.log("time until party: " + timeTill);
 
-    //posts events to the DOM
-    $("#pendingEvents > tbody").append("<tr class=rowID id='" + partyID + "'><td class=eventTime>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class=partyID>" + partyName + "</td><td class=location>" +
-      addy + "</td><td class=host >" + host + "</td><td class=minutesTill>" + timeTill + "</td></tr>");
+    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
+      addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
 
   });
 
