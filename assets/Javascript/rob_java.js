@@ -82,8 +82,9 @@ $(document).ready(function () {
     console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
     console.log("time until party: " + timeTill);
 
-    $("#pendingEvents > tbody").append("<tr class='rowID' id='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
-      addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
+    //posts events to the DOM
+    $("#pendingEvents > tbody").append("<tr class=rowID id='" + partyID + "'><td class=eventTime>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class=partyID>" + partyName + "</td><td class=location>" +
+      addy + "</td><td class=host >" + host + "</td><td class=minutesTill>" + timeTill + "</td></tr>");
 
   });
 
@@ -110,7 +111,7 @@ $(document).ready(function () {
     console.log("testing: "+rowData);  
     console.log(table.row(this).data());
     var database = firebase.database();
-    var key = rowData.id;
+    var key = document.getElementById
     console.log("key is: " + key);
   });
 });
