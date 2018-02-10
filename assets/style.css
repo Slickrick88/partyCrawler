@@ -1,2 +1,12 @@
-
-Create event
+#map{
+    height: 700px;
+  width: 80%;
+  border: 4px solid rgb(185, 144, 67);
+    border-radius: 7px;
+  outline: none;
+  border-color: rgb(185, 144, 67);
+  box-shadow: 0 0 50px rgb(185, 144, 67);
+  margin: 30px;
+  margin-left:10%;
+  
+}
