@@ -14,7 +14,6 @@
     var database = firebase.database();
     console.log("test");
     $("#submitParty").on("click", function (event) {
-      alert("hey are you working")
       console.log("testing Button");
       event.preventDefault();
       console.log("test2");

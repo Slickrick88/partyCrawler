@@ -134,8 +134,6 @@ function initMap() {
       console.log("testing: " + key);
       //retrieves clicked record from database
       reference = database.ref('/' + key);
-      // attire= attireFun(reference.val().Attire);
-      // console.log( reference);
       reference.child("Items").once('value', gotData);
       // function that loops through items
       function gotData(snapshot) {
@@ -150,17 +148,17 @@ function initMap() {
           $("#whoWhat > tbody").append("<tr class='itemID' data-key='" + I + "'><td class=who'>" + person + "</td><td class='what'>" + stuff + "</td></tr>");
         });
       };
-      database.ref('/' + key).on("child_added",function gotData2(snapshot) {
-        console.log(snapshot.val());
-        snapshot.forEach(function (itemSnapshot) {
-          var I = itemSnapshot.key;
-          console.log("item key: " + I);
-          var person = itemSnapshot.val().Who;
-          console.log("whp: " + person);
-          var stuff = itemSnapshot.val().What;
-          console.log("what: " + what);
-          $("#whoWhat > tbody").append("<tr class='itemID' data-key='" + I + "'><td class=who'>" + person + "</td><td class='what'>" + stuff + "</td></tr>");
-        });
+    });
+
+    // event listener on items added to the party selected
+    reference = database.ref('/' + key+ '/items');
+    reference.on("child_added", function gotData2(snapshot) {
+      $("#whoWhat tbody tr").remove();
+      snapshot.forEach(function (itemSnapshot) {
+        var I = itemSnapshot.key;
+        var person = itemSnapshot.val().Who;
+        var stuff = itemSnapshot.val().What;
+        $("#whoWhat > tbody").append("<tr class='itemID' data-key='" + I + "'><td class=who'>" + person + "</td><td class='what'>" + stuff + "</td></tr>");
       });
     });
 
@@ -178,7 +176,7 @@ function initMap() {
         What: what,
       });
     });
-    
+
 
     //function to pull back type of cloths
     function attireFun(cloths) {
