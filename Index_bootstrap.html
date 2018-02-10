@@ -60,7 +60,14 @@
         </tbody>
       </table>
 
-      <div class="container">
+      <div class="container" ID="popUpContainer">
+        <div class="container" ID="additionalPartyData">
+          <!-- this is to dispay data not visible in table above -->
+          <div class=additionalData id="partyType"></div>
+          <div class=additionalData id="partyAttire"></div>
+          <div class=additionalData id="partyKids"></div>
+          <div class=additionalData id="partyDesc"></div>
+        </div>
         <h2>Whos Bringing What?</h2>
         <div class="row">
           <div class="form-group col-sm-4">
@@ -72,7 +79,7 @@
             <input type="text" class="form-control" id="what">
           </div>
         </div>
-        <button id="lap">Add Item</button>
+        <button type ="submit" id="itemAdd">Add Item</button>
         <br>
         <table class="table table-bordered" id="whoWhat">
           <thead>
@@ -88,7 +95,6 @@
         </table>
         <br>
       </div>
-      <button id="lap">Add Item</button>
     </div>
   </div>
 
