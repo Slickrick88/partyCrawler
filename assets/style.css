@@ -1,3 +1,4 @@
+
 #map{
     height: 700px;
   width: 80%;
@@ -10,3 +11,47 @@
   margin-left:10%;
   
 }
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    line-height: 150%;
+    color: #333;
+    background: darkgrey;
+  }
+  
+
+#pendingEvents{ 
+    width: 98%
+}
+.table table-bordered { 
+    width: 98%;
+    margin-right: 120px;
+    padding: 0;
+}
+
+#whoWhat { 
+    width: 96.8%;
+    margin-right: 120px;
+    padding: 0
+}
+
+
+#eventType { 
+    visibility: visible; 
+    transition-delay: 0s; 
+    border: none
+}
+
+
+
+@media only screen and (min-width: 480px){
+   
+}
+
+@media only screen and (min-width: 768px) {
+ 
+} 
+
