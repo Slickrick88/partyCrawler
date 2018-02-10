@@ -1,8 +1,14 @@
 function initMap() {
+<<<<<<< HEAD
 
   // this is where the map will start
   var charlotte = {
     coordinates: { lat: 35.2271, lng: -80.8431 }
+=======
+  
+  // this is where the map will start
+  var charlotte = {
+    coordinates:{lat: 35.2271, lng: -80.8431}
   };
 
 
@@ -11,6 +17,75 @@ function initMap() {
     center: charlotte.coordinates
   });
 
+
+function addMarker(location){
+  var marker = new google.maps.Marker({
+    position: location.coordinates,
+    map: map,
+    title:Location.eventName
+    });
+
+    var infoWindow = new google.maps.InfoWindow({
+      content:location.eventName
+    })
+    marker.addListener('click', function() {
+      infoWindow.open(map, marker);
+    });
+  
+  }
+
+
+
+$(document).ready(function () {
+  var partyName;
+  var partyTime;
+  var eventType;
+  var address;
+  var city;
+  var state;
+  var host;
+  var who;
+  var what;
+  var stuff;
+  var attire;
+  var addy;
+  var timeTill;
+  var partyID;
+  var counter;
+  var timer;
+  var childern;
+  var stuff;
+  var description;
+  var key;
+  var reference;
+
+  //will hold information gathered from firebase to be used in both geocode and map
+  var addressArray = [];
+  var eventNameArray = [];
+  var addressToSearch;
+  var tempCoords = {
+    eventName: "",
+    address:"",
+    coordinates:"",
+  };
+
+  var config = {
+    apiKey: "AIzaSyAb-Eg8PzUPHvjSZbD9x6DwLEzUL9Ap_dM",
+    authDomain: "partycrawlerpeople.firebaseapp.com",
+    databaseURL: "https://partycrawlerpeople.firebaseio.com",
+    projectId: "partycrawlerpeople",
+    storageBucket: "partycrawlerpeople.appspot.com",
+    messagingSenderId: "402396598323"
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
+  };
+
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 11,
+    center: charlotte.coordinates
+  });
+
+<<<<<<< HEAD
 
   function addMarker(location) {
     var marker = new google.maps.Marker({
@@ -29,6 +104,26 @@ function initMap() {
   }
 
 
+=======
+  // Create Firebase event for adding events to the database and a row in the html when a user adds an entry
+  database.ref().on("child_added", function (childSnapshot) {
+    //sets up the train objects in the dom
+    event.preventDefault();
+
+    partyID = childSnapshot.key;
+    console.log("partyID: " + partyID);
+    host = childSnapshot.val().Host;
+    partyName = childSnapshot.val().Name;
+    addy = childSnapshot.val().Location;
+    partyTime = childSnapshot.val().Time;
+ 
+    //pushes to relevant array
+      addressArray.push(addy);
+      eventNameArray.push(partyName);
+      
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("MM/DD/YYYY hh:mm:ss"));
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
 
   $(document).ready(function () {
     var partyName;
@@ -73,6 +168,7 @@ function initMap() {
 
     firebase.initializeApp(config);
 
+<<<<<<< HEAD
     var database = firebase.database();
     console.log("test");
     $("#submit").on("click", function (event) {
@@ -91,10 +187,15 @@ function initMap() {
       addy = address + " " + city + " " + state;
 
       console.log("name " + partyName);
+=======
+     
+  });
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
 
       //reset entry form
       $("#partyCrawlerInput")[0].reset();
 
+<<<<<<< HEAD
       //push to firebase
       database.ref().push({
         Name: partyName,
@@ -108,6 +209,32 @@ function initMap() {
         Occurred: false,
         Items: [{
         }]
+=======
+  var table = $("#pendingEvents").DataTable();
+  $("#pendingEvents tbody").on("click", "tr", function () {
+    //remove items the were in the table previously
+    $("#itemsTbl tbody tr").remove();
+    //gets the key from the row that is clicked so it can retrieve data from firebase
+
+    key = $(this).data("key");
+    console.log("testing: " + key);
+    //retrieves clicked record from database
+    reference = database.ref('/' + key);
+    // attire= attireFun(reference.val().Attire);
+    // console.log( reference);
+    reference.child("Items").once('value', gotData);
+    // function that loops through items
+    function gotData(snapshot) {
+      console.log(snapshot.val());
+      snapshot.forEach(function(itemSnapshot) {
+        var I = itemSnapshot.key;
+        console.log("item key: " + I);
+        var person = itemSnapshot.val().Who;
+        console.log("whp: " + person);
+        var stuff = itemSnapshot.val().what;
+        console.log("what: " + what);
+        $("#whoWhat > tbody").append("<tr class='itemID' data-key='" + I + "'><td class=who'>" + person + "</td><td class='what'>" + stuff + "</td></tr>");
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
       });
     });
 
@@ -234,6 +361,7 @@ function initMap() {
         return "No Kids!";
       };
     };
+<<<<<<< HEAD
 
     // For Google Apis
     // waits for all children to be added to array
@@ -250,10 +378,37 @@ function initMap() {
     }, 500);
 
     function searchAndAdd() {
+=======
+  });
+
+    var key = $(this).data("key");
+    console.log("testing: "+key); 
+    
+    database.ref(key+"");
+    
+  });
+  
+  // For Google Apis
+    // waits for all children to be added to array
+    
+      var count = 0;
+      setInterval(function(){
+        if(count < eventNameArray.length){
+      eventName = eventNameArray[count];
+      addressToSearch = addressArray[count];
+
+      searchAndAdd();
+        }
+        count++;
+    }, 500);
+
+    function searchAndAdd(){
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
       tempCoords.eventName = eventName;
       tempCoords.address = addressToSearch;
       findCoordinates();
     };
+<<<<<<< HEAD
 
     function findCoordinates() {
 
@@ -284,3 +439,35 @@ function initMap() {
 
 
 };//in it map closing
+=======
+  
+    function findCoordinates(){
+    
+       var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + addressToSearch +"&key=AIzaSyCWa5eHnMAMi6rkFWh1pg_Ssxz8lTN6lQk";
+   
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+      }).done(function(response)
+      {
+        
+        var eventLat = response.results[0].geometry.location.lat;
+        var eventLng = response.results[0].geometry.location.lng;
+  
+        var formatLocation = {
+          lat:eventLat ,
+          lng: eventLng 
+        };
+        console.log("lat: "+ eventLat + ", lng: " + eventLng);
+       
+  
+        tempCoords.coordinates = formatLocation;
+        addMarker(tempCoords);
+  
+       
+       });
+      } //function findCoordinates ends
+});
+}//ends initMap
+
+>>>>>>> a63ed7f2fba9766c9aeb9b8d9586c1cd0906832d
