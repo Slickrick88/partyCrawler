@@ -9,6 +9,7 @@
   <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
   <script src="assets/Javascript/rob_java.js"></script>
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
   <title>Really Fuckin Sweet App</title>
 </head>
 
@@ -23,9 +24,15 @@
         </div>
 
         <ul class="nav navbar-nav">
-          <li class="active"><a href="file:///C:/Users/rpicc/Documents/Group%20Project%201/Index_bootstrap.html">My Events</a></li>
-          <li><a href="#">See Events</a></li>
-          <li><a href="PartyCrawler.html">Create Event</a></li>
+          <li class="active">
+            <a href="file:///C:/Users/rpicc/Documents/Group%20Project%201/Index_bootstrap.html">My Events</a>
+          </li>
+          <li>
+            <a href="#">See Events</a>
+          </li>
+          <li>
+            <a href="PartyCrawler.html">Create Event</a>
+          </li>
         </ul>
 
       </div>
@@ -37,14 +44,41 @@
 
     <div class="container">
       <h2>Events Bro</h2>
-        <table class="table table-bordered" id="pendingEvents">
+      <table class="table table-bordered" id="pendingEvents">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name of Event</th>
+            <th>Location</th>
+            <th>Host</th>
+            <th>Time Till Event (days)</th>
+          </tr>
+        </thead>
+
+        <tbody id="events">
+
+        </tbody>
+      </table>
+
+      <div class="container">
+        <h2>Whos Bringing What?</h2>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="who">Your Name</label>
+            <input type="text" class="form-control" id="who">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="what">What are you brining</label>
+            <input type="text" class="form-control" id="what">
+          </div>
+        </div>
+        <button id="lap">Add Item</button>
+        <br>
+        <table class="table table-bordered" id="whoWhat">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Name of Event</th>
-              <th>Location</th>
-              <th>Host</th>
-              <th>Time Till Event (days)</th>
+              <th>Who</th>
+              <th>What'cha Bringing?</th>
             </tr>
           </thead>
 
@@ -52,12 +86,18 @@
 
           </tbody>
         </table>
-
+        <br>
+      </div>
+      <button id="lap">Add Item</button>
     </div>
-    
-    <div class="google-div"><h2>Location Information</h2></div>
+  </div>
+
+  <div class="google-div">
+    <h2>Location Information</h2>
+  </div>
 
   </div>
-  
+
 </body>
+
 </html>

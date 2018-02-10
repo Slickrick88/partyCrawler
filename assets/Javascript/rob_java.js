@@ -1,17 +1,21 @@
 $(document).ready(function () {
   var partyName;
   var partyTime;
+  var eventType;
   var address;
   var city;
   var state;
   var host;
   var pplComing;
   var stuff;
+  var attire;
   var addy;
   var timeTill;
   var partyID;
   var counter;
   var timer;
+  var childern;
+  var stuff;
 
   var config = {
     apiKey: "AIzaSyAb-Eg8PzUPHvjSZbD9x6DwLEzUL9Ap_dM",
@@ -30,14 +34,16 @@ $(document).ready(function () {
     event.preventDefault();
     console.log("test2");
     partyName = $("#eventName").val().trim();
+    eventType = $("#eventType").val().trim();
+    attire = $("#attire").val().trim();
     partyTime = $("#datetime").val().trim();
     address = $("#address-input").val().trim();
     city = $("#city-input").val().trim();
+    childern = $("#child").val().trim();
     host = $("#host").val().trim();
     state = $("#state-input").val().trim();
-    pplComing = $("#invitees").val().trim();
-    stuff = $("#items").val().trim();
     addy = address + " " + city + " " + state;
+
     console.log("name " + partyName);
 
     //reset entry form
@@ -47,18 +53,15 @@ $(document).ready(function () {
     database.ref().push({
       Name: partyName,
       Location: addy,
-      Event_Type: "NA",
-      Kid_Friendly: true,
+      Event_Type: eventType,
+      Attire: attire,
+      Kid_Friendly: childern,
       Time: partyTime,
       Host: host,
-      Occurred: true,
-      People: [{
-        guest: pplComing
-      }],
+      Occurred: false,
       Items: [{
-        itemDescription: stuff,
-        itemTaken: false,
-        takeBy: "NA"
+        Who: "NA",
+        what: "NA",
       }]
     });
   });
@@ -67,39 +70,42 @@ $(document).ready(function () {
   database.ref().on("child_added", function (childSnapshot, prevChildKey) {
     //sets up the train objects in the dom
     event.preventDefault();
+
     partyID = childSnapshot.key;
-    console.log("partyID: "+ partyID);
+    console.log("partyID: " + partyID);
     host = childSnapshot.val().Host;
     partyName = childSnapshot.val().Name;
     addy = childSnapshot.val().Location;
     partyTime = childSnapshot.val().Time;
-    var timeTill = moment().diff(moment(partyTime), "days");
-    console.log("time until party: "+ timeTill);
+
+    var currentTime = moment();
+    console.log("CURRENT TIME: " + moment(currentTime).format("MM/DD/YYYY hh:mm:ss"));
+
+    var timeTill = moment(partyTime).diff(currentTime, "days");
+    console.log(moment(partyTime).format("MM/DD/YYYY hh:mm:ss"));
+    console.log("time until party: " + timeTill);
+
+    if (timeTill === -1)  {
+      $(".rowID").val("");
+    };
+ 
     //posts events to the DOM
+    $("#pendingEvents > tbody").append("<tr class='rowID' data-key='" + partyID + "'><td class=partyTime'>" + (moment(partyTime).format("MM/DD/YYYY hh:mm:ss")) + "</td><td class='partyName'>" + partyName + "</td><td class=address>" +
+      addy + "</td><td class=host>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
+
+  });
+
+ 
+  var table=$("#pendingEvents").DataTable();
+  $("#pendingEvents tbody").on("click", "tr", function () {
+    //remove items the were in the table previously
+    $("#itemsTbl tbody tr").remove();
+    //gets the key from the row that is clicked so it can retrieve data from firebase
+    var key = $(this).data("key");
+    console.log("testing: "+key); 
     
-    $("#pendingEvents > tbody").append("<tr data-key='"+ partyID +"'><td>" + partyTime + "</td><td class='partyID'>" + partyName + "</td><td>" +
-      addy + "</td><td>" + host + "</td><td class='minutesTill'>" + timeTill + "</td></tr>");
+    database.ref(key+"");
 
-  });
-
-  function partyDataRefresh(){
-    var min = document.getObjectByClass("minutesTill");
-    console.log("min element: "+ min);
-    for (i=0; i< min.length; i++){
-        var timeLeft = min[i].html()
-        console.log(timeLeft)
-    }
-  };
-
-  function updateTime(){
-    timer = setInterval(partyTime, 1 * 1000)
-  };
-
-  $("tr").on("click", function() {
-    $(location).attr('href', 'Add_page.html')
-    firebase.database().ref("/"+key).once('value').then(function(snapshot) {
-    console.log(snapshot.val());
+    
   });
 });
-});
-
